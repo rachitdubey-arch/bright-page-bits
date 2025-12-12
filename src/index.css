@@ -6,81 +6,81 @@
 
 @layer base {
   :root {
-    /* Warm cream/beige color palette from the reference */
-    --background: 40 33% 96%;
-    --foreground: 25 20% 20%;
+    /* MantraCare color palette - clean white with teal accents */
+    --background: 0 0% 100%;
+    --foreground: 215 50% 23%;
 
-    --card: 40 40% 98%;
-    --card-foreground: 25 20% 20%;
+    --card: 210 40% 98%;
+    --card-foreground: 215 50% 23%;
 
-    --popover: 40 40% 98%;
-    --popover-foreground: 25 20% 20%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 215 50% 23%;
 
-    --primary: 25 35% 35%;
-    --primary-foreground: 40 33% 96%;
+    --primary: 187 85% 43%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 35 25% 90%;
-    --secondary-foreground: 25 20% 25%;
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 215 50% 23%;
 
-    --muted: 35 20% 92%;
-    --muted-foreground: 25 10% 45%;
+    --muted: 210 30% 96%;
+    --muted-foreground: 215 25% 45%;
 
-    --accent: 145 30% 45%;
-    --accent-foreground: 40 33% 98%;
+    --accent: 187 85% 43%;
+    --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 35 20% 88%;
-    --input: 35 20% 88%;
-    --ring: 25 35% 35%;
+    --border: 210 30% 90%;
+    --input: 210 30% 90%;
+    --ring: 187 85% 43%;
 
-    --radius: 0.75rem;
+    --radius: 0.5rem;
 
     /* Custom tokens */
-    --tag-bg: 35 30% 92%;
-    --tag-border: 35 25% 85%;
-    --success: 145 45% 40%;
-    --success-light: 145 40% 92%;
+    --tag-bg: 210 40% 96%;
+    --tag-border: 210 30% 88%;
+    --success: 160 60% 45%;
+    --success-light: 160 50% 95%;
     --warning: 35 90% 55%;
     --info: 200 70% 50%;
-    --shadow-soft: 0 4px 20px -2px hsl(25 20% 20% / 0.08);
-    --shadow-medium: 0 8px 30px -4px hsl(25 20% 20% / 0.12);
+    --shadow-soft: 0 2px 8px -2px hsl(215 50% 23% / 0.08);
+    --shadow-medium: 0 4px 16px -4px hsl(215 50% 23% / 0.12);
   }
 
   .dark {
-    --background: 25 15% 10%;
-    --foreground: 40 20% 90%;
+    --background: 215 40% 10%;
+    --foreground: 210 40% 95%;
 
-    --card: 25 15% 14%;
-    --card-foreground: 40 20% 90%;
+    --card: 215 35% 14%;
+    --card-foreground: 210 40% 95%;
 
-    --popover: 25 15% 14%;
-    --popover-foreground: 40 20% 90%;
+    --popover: 215 35% 14%;
+    --popover-foreground: 210 40% 95%;
 
-    --primary: 35 30% 70%;
-    --primary-foreground: 25 15% 10%;
+    --primary: 187 75% 50%;
+    --primary-foreground: 215 40% 10%;
 
-    --secondary: 25 12% 20%;
-    --secondary-foreground: 40 20% 90%;
+    --secondary: 215 30% 20%;
+    --secondary-foreground: 210 40% 95%;
 
-    --muted: 25 12% 18%;
-    --muted-foreground: 35 15% 60%;
+    --muted: 215 25% 18%;
+    --muted-foreground: 210 25% 60%;
 
-    --accent: 145 30% 50%;
-    --accent-foreground: 25 15% 10%;
+    --accent: 187 75% 50%;
+    --accent-foreground: 215 40% 10%;
 
     --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 25 12% 22%;
-    --input: 25 12% 22%;
-    --ring: 35 30% 70%;
+    --border: 215 25% 22%;
+    --input: 215 25% 22%;
+    --ring: 187 75% 50%;
 
-    --tag-bg: 25 12% 18%;
-    --tag-border: 25 12% 25%;
-    --success: 145 40% 45%;
-    --success-light: 145 25% 18%;
+    --tag-bg: 215 25% 18%;
+    --tag-border: 215 25% 25%;
+    --success: 160 50% 45%;
+    --success-light: 160 30% 18%;
   }
 }
 
