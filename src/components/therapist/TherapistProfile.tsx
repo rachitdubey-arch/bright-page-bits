@@ -9,7 +9,8 @@ import {
   Briefcase,
   MessageCircle,
   Award,
-  BookOpen
+  BookOpen,
+  CreditCard
 } from 'lucide-react';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Badge } from '@/components/ui/badge';
@@ -59,6 +60,14 @@ I specialize in anxiety disorders, depression, relationship issues, and trauma r
     'Young Adults',
     'Couples',
     'LGBTQ+ Affirming'
+  ],
+  insurance: [
+    'Aetna',
+    'Cigna',
+    'Blue Cross Blue Shield (BCBS)',
+    'United HealthCare (UHC)',
+    'Humana',
+    'Kaiser Permanente'
   ]
 };
 
@@ -124,18 +133,31 @@ export const TherapistProfile = () => {
             <ProfileSection 
               title="About Me" 
               icon={<Heart className="w-5 h-5 text-primary" />}
-              defaultOpen={true}
+              collapsible={false}
             >
               <p className="text-foreground/80 leading-relaxed whitespace-pre-line">
                 {therapistData.bio}
               </p>
             </ProfileSection>
 
+            {/* Insurance Coverage */}
+            <ProfileSection 
+              title="Insurance Coverage" 
+              icon={<CreditCard className="w-5 h-5 text-primary" />}
+              collapsible={false}
+            >
+              <div className="flex flex-wrap gap-2">
+                {therapistData.insurance.map((ins) => (
+                  <SpecializationTag key={ins} label={ins} variant="highlight" />
+                ))}
+              </div>
+            </ProfileSection>
+
             {/* Specializations */}
             <ProfileSection 
               title="Specializations" 
               icon={<MessageCircle className="w-5 h-5 text-primary" />}
-              defaultOpen={true}
+              collapsible={false}
             >
               <div className="flex flex-wrap gap-2">
                 {therapistData.specializations.map((spec) => (
@@ -148,7 +170,7 @@ export const TherapistProfile = () => {
             <ProfileSection 
               title="Therapeutic Approaches" 
               icon={<BookOpen className="w-5 h-5 text-primary" />}
-              defaultOpen={false}
+              collapsible={false}
             >
               <div className="flex flex-wrap gap-2">
                 {therapistData.approaches.map((approach) => (
@@ -161,7 +183,7 @@ export const TherapistProfile = () => {
             <ProfileSection 
               title="Qualifications & Training" 
               icon={<Award className="w-5 h-5 text-primary" />}
-              defaultOpen={false}
+              collapsible={false}
             >
               <div className="grid sm:grid-cols-2 gap-3">
                 {therapistData.qualifications.map((qual, index) => (
@@ -179,7 +201,7 @@ export const TherapistProfile = () => {
             <ProfileSection 
               title="I Work With" 
               icon={<Users className="w-5 h-5 text-primary" />}
-              defaultOpen={false}
+              collapsible={false}
             >
               <div className="flex flex-wrap gap-2">
                 {therapistData.clientFocus.map((focus) => (
