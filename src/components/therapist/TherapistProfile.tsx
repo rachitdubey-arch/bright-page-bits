@@ -10,7 +10,9 @@ import {
   MessageCircle,
   Award,
   BookOpen,
-  CreditCard
+  CreditCard,
+  GraduationCap,
+  ShieldCheck
 } from 'lucide-react';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Badge } from '@/components/ui/badge';
@@ -18,6 +20,9 @@ import { ProfileSection } from './ProfileSection';
 import { BookingSidebar } from './BookingSidebar';
 import { SpecializationTag } from './SpecializationTag';
 import { QualificationBadge } from './QualificationBadge';
+import { EducationEntry } from './EducationEntry';
+import { WorkExperienceEntry } from './WorkExperienceEntry';
+import { CertificationEntry } from './CertificationEntry';
 
 const therapistData = {
   name: 'Dr. Priya Sharma',
@@ -68,6 +73,24 @@ I specialize in anxiety disorders, depression, relationship issues, and trauma r
     'United HealthCare (UHC)',
     'Humana',
     'Kaiser Permanente'
+  ],
+  education: [
+    { institution: 'Mumbai University', degree: 'Ph.D. in Clinical Psychology', from: '2009', to: '2012' },
+    { institution: 'NIMHANS, Bangalore', degree: 'M.Phil in Clinical Psychology', from: '2007', to: '2009' },
+    { institution: 'Delhi University', degree: 'M.A. in Psychology', from: '2005', to: '2007' },
+    { institution: 'St. Xavier\'s College, Mumbai', degree: 'B.A. in Psychology (Hons)', from: '2002', to: '2005' }
+  ],
+  workExperience: [
+    { jobTitle: 'Senior Clinical Psychologist', company: 'Fortis Healthcare', employmentType: 'Full-time', from: 'Jan 2018', to: 'Present' },
+    { jobTitle: 'Clinical Psychologist', company: 'Kokilaben Dhirubhai Ambani Hospital', employmentType: 'Full-time', from: 'Mar 2014', to: 'Dec 2017' },
+    { jobTitle: 'Junior Psychologist', company: 'Tata Memorial Centre', employmentType: 'Full-time', from: 'Jun 2012', to: 'Feb 2014' },
+    { jobTitle: 'Psychology Intern', company: 'NIMHANS', employmentType: 'Internship', from: 'Jan 2011', to: 'May 2012' }
+  ],
+  certifications: [
+    { certifyingBody: 'Rehabilitation Council of India (RCI)', certificationName: 'Licensed Clinical Psychologist', licenseNumber: 'A12345', validFrom: 'Jan 2012', validTo: 'Dec 2027' },
+    { certifyingBody: 'EMDR India', certificationName: 'EMDR Certified Practitioner', licenseNumber: 'EMDR-2018-456', validFrom: 'Mar 2018', validTo: 'Mar 2026' },
+    { certifyingBody: 'Beck Institute', certificationName: 'Certified CBT Therapist', validFrom: 'Jun 2015', validTo: 'Jun 2025' },
+    { certifyingBody: 'Indian Association of Clinical Psychologists', certificationName: 'IACP Membership', licenseNumber: 'IACP-789', validFrom: 'Jan 2013', validTo: 'Dec 2025' }
   ]
 };
 
@@ -206,6 +229,65 @@ export const TherapistProfile = () => {
               <div className="flex flex-wrap gap-2">
                 {therapistData.clientFocus.map((focus) => (
                   <SpecializationTag key={focus} label={focus} />
+                ))}
+              </div>
+            </ProfileSection>
+
+            {/* Education */}
+            <ProfileSection 
+              title="Education" 
+              icon={<GraduationCap className="w-5 h-5 text-primary" />}
+              collapsible={false}
+            >
+              <div className="space-y-3">
+                {therapistData.education.map((edu, index) => (
+                  <EducationEntry 
+                    key={index}
+                    institution={edu.institution}
+                    degree={edu.degree}
+                    from={edu.from}
+                    to={edu.to}
+                  />
+                ))}
+              </div>
+            </ProfileSection>
+
+            {/* Work Experience */}
+            <ProfileSection 
+              title="Work Experience" 
+              icon={<Briefcase className="w-5 h-5 text-primary" />}
+              collapsible={false}
+            >
+              <div className="space-y-3">
+                {therapistData.workExperience.map((exp, index) => (
+                  <WorkExperienceEntry 
+                    key={index}
+                    jobTitle={exp.jobTitle}
+                    company={exp.company}
+                    employmentType={exp.employmentType}
+                    from={exp.from}
+                    to={exp.to}
+                  />
+                ))}
+              </div>
+            </ProfileSection>
+
+            {/* Certifications / Licenses */}
+            <ProfileSection 
+              title="Certifications / Licenses" 
+              icon={<ShieldCheck className="w-5 h-5 text-primary" />}
+              collapsible={false}
+            >
+              <div className="space-y-3">
+                {therapistData.certifications.map((cert, index) => (
+                  <CertificationEntry 
+                    key={index}
+                    certifyingBody={cert.certifyingBody}
+                    certificationName={cert.certificationName}
+                    licenseNumber={cert.licenseNumber}
+                    validFrom={cert.validFrom}
+                    validTo={cert.validTo}
+                  />
                 ))}
               </div>
             </ProfileSection>
