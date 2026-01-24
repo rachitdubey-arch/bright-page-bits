@@ -59,6 +59,8 @@ export default {
           DEFAULT: "hsl(var(--success))",
           light: "hsl(var(--success-light))",
         },
+        online: "hsl(var(--online))",
+        info: "hsl(var(--info))",
       },
       borderRadius: {
         lg: "var(--radius)",
