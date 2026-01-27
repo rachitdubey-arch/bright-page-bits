@@ -6,17 +6,17 @@
 
 @layer base {
   :root {
-    /* MantraCare color palette - clean white with teal accents */
-    --background: 0 0% 100%;
+    /* TherapyMantra color palette - cyan/blue accents on light gray */
+    --background: 214 33% 97%;
     --foreground: 215 50% 23%;
 
-    --card: 210 40% 98%;
+    --card: 0 0% 100%;
     --card-foreground: 215 50% 23%;
 
     --popover: 0 0% 100%;
     --popover-foreground: 215 50% 23%;
 
-    --primary: 187 85% 43%;
+    --primary: 195 100% 50%;
     --primary-foreground: 0 0% 100%;
 
     --secondary: 210 40% 96%;
@@ -25,7 +25,7 @@
     --muted: 210 30% 96%;
     --muted-foreground: 215 25% 45%;
 
-    --accent: 187 85% 43%;
+    --accent: 195 100% 50%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84.2% 60.2%;
@@ -33,7 +33,7 @@
 
     --border: 210 30% 90%;
     --input: 210 30% 90%;
-    --ring: 187 85% 43%;
+    --ring: 195 100% 50%;
 
     --radius: 0.5rem;
 
@@ -42,10 +42,11 @@
     --tag-border: 210 30% 88%;
     --success: 160 60% 45%;
     --success-light: 160 50% 95%;
-    --warning: 35 90% 55%;
-    --info: 200 70% 50%;
+    --warning: 45 93% 58%;
+    --info: 195 100% 50%;
     --shadow-soft: 0 2px 8px -2px hsl(215 50% 23% / 0.08);
     --shadow-medium: 0 4px 16px -4px hsl(215 50% 23% / 0.12);
+    --online: 142 70% 45%;
   }
 
   .dark {
@@ -58,7 +59,7 @@
     --popover: 215 35% 14%;
     --popover-foreground: 210 40% 95%;
 
-    --primary: 187 75% 50%;
+    --primary: 195 90% 55%;
     --primary-foreground: 215 40% 10%;
 
     --secondary: 215 30% 20%;
@@ -67,7 +68,7 @@
     --muted: 215 25% 18%;
     --muted-foreground: 210 25% 60%;
 
-    --accent: 187 75% 50%;
+    --accent: 195 90% 55%;
     --accent-foreground: 215 40% 10%;
 
     --destructive: 0 62.8% 30.6%;
@@ -75,12 +76,13 @@
 
     --border: 215 25% 22%;
     --input: 215 25% 22%;
-    --ring: 187 75% 50%;
+    --ring: 195 90% 55%;
 
     --tag-bg: 215 25% 18%;
     --tag-border: 215 25% 25%;
     --success: 160 50% 45%;
     --success-light: 160 30% 18%;
+    --online: 142 60% 50%;
   }
 }
 
