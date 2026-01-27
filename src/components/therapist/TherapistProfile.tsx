@@ -20,6 +20,7 @@ import { BookingSidebar } from './BookingSidebar';
 import { SpecializationTag } from './SpecializationTag';
 import { QualificationBadge } from './QualificationBadge';
 import { ProfessionalBackground } from './ProfessionalBackground';
+import { ReviewsSection } from './ReviewsSection';
 
 const therapistData = {
   name: 'Dr. Priya Sharma',
@@ -100,6 +101,12 @@ My aim is to provide holistic care, tailored to your unique needs. Every individ
     { certifyingBody: 'EMDR India', certificationName: 'EMDR Certified Practitioner', licenseNumber: 'EMDR-2018-456', validFrom: 'Mar 2018', validTo: 'Mar 2026' },
     { certifyingBody: 'Beck Institute', certificationName: 'Certified CBT Therapist', validFrom: 'Jun 2015', validTo: 'Jun 2025' },
     { certifyingBody: 'Indian Association of Clinical Psychologists', certificationName: 'IACP Membership', licenseNumber: 'IACP-789', validFrom: 'Jan 2013', validTo: 'Dec 2025' }
+  ],
+  reviews: [
+    { id: '1', name: 'Rahul Rajput', rating: 5, comment: 'I would like to express my sincere appreciation for today\'s session. Dr. Sharma demonstrated exceptional professionalism, clarity, and empathy throughout. Her ability to understand and guide the conversation took the experience to the next level. Her insights were meaningful, and her approach made the session both impactful and comfortable. Thank you, Dr. Sharma, for being truly amazing at what you do.' },
+    { id: '2', name: 'Prachi Tyagi', rating: 5, comment: 'It was an amazing session with insightful solutions and advices. Thank you so much for helping me' },
+    { id: '3', name: 'Suryanshi Tyagi', rating: 5, comment: 'It was a great session' },
+    { id: '4', name: 'Gayathri Robbi', rating: 5, comment: 'It was a great session with Dr. Sharma. She made me understand why things are the way they are and taught me many things to work on that are in my control. The session gave me a hope for life. Thank you so much Dr. Sharma' }
   ]
 };
 
@@ -253,6 +260,13 @@ export const TherapistProfile = () => {
               education={therapistData.education}
               workExperience={therapistData.workExperience}
               certifications={therapistData.certifications}
+            />
+
+            {/* Reviews Section */}
+            <ReviewsSection 
+              reviews={therapistData.reviews}
+              averageRating={therapistData.rating}
+              totalReviews={therapistData.reviewCount}
             />
           </div>
 
