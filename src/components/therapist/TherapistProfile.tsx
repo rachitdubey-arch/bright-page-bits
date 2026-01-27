@@ -120,40 +120,48 @@ export const TherapistProfile = () => {
                   <AvatarFallback className="text-2xl font-serif">{therapistData.name.split(' ').map(n => n[0]).join('')}</AvatarFallback>
                 </Avatar>
                 
-                <div className="flex-1 space-y-2">
-                  <div className="flex items-start justify-between gap-4">
-                    <div>
-                      <h1 className="text-xl sm:text-2xl font-serif font-semibold text-foreground">
-                        {therapistData.name}
-                      </h1>
-                      <p className="text-muted-foreground text-sm">{therapistData.title}</p>
-                      <p className="text-muted-foreground text-xs">{therapistData.subtitle}</p>
+                <div className="flex-1 space-y-3">
+                  {/* Name and Verified Badge */}
+                  <div className="flex items-center gap-2 flex-wrap">
+                    <h1 className="text-xl sm:text-2xl font-serif font-semibold text-foreground">
+                      {therapistData.name}
+                    </h1>
+                    <Badge variant="outline" className="text-[hsl(var(--online))] border-[hsl(var(--online))] text-xs font-medium">
+                      <Shield className="w-3 h-3 mr-1" />
+                      Verified
+                    </Badge>
+                  </div>
+                  
+                  {/* Title */}
+                  <p className="text-muted-foreground text-sm">{therapistData.title}</p>
+
+                  {/* Rating, Location, Languages */}
+                  <div className="flex items-center gap-4 flex-wrap text-sm text-muted-foreground">
+                    <div className="flex items-center gap-1">
+                      <Star className="w-4 h-4 fill-warning text-warning" />
+                      <span className="font-medium text-foreground">{therapistData.rating}</span>
+                      <span>({therapistData.reviewCount} reviews)</span>
                     </div>
-                    <div className="flex items-center gap-1 shrink-0">
-                      <Star className="w-4 h-4 fill-warning text-warning" />
-                      <Star className="w-4 h-4 fill-warning text-warning" />
-                      <Star className="w-4 h-4 fill-warning text-warning" />
-                      <Star className="w-4 h-4 fill-warning text-warning" />
-                      <Star className="w-4 h-4 fill-warning text-warning" />
-                      <span className="text-sm text-muted-foreground ml-1">({therapistData.reviewCount})</span>
+                    <div className="flex items-center gap-1">
+                      <MapPin className="w-4 h-4" />
+                      <span>{therapistData.location}</span>
+                    </div>
+                    <div className="flex items-center gap-1">
+                      <Languages className="w-4 h-4" />
+                      <span>{therapistData.languages.join(', ')}</span>
                     </div>
                   </div>
 
-                  {/* Online Status */}
-                  {therapistData.isOnline && (
-                    <p className="text-[hsl(var(--online))] font-medium text-sm">Online</p>
-                  )}
-
-                  {/* Availability */}
-                  <div className="flex items-center gap-1.5 text-sm text-muted-foreground">
-                    <Calendar className="w-4 h-4" />
-                    <span>{therapistData.availability.join(', ')}</span>
-                  </div>
-
-                  {/* Location */}
-                  <div className="flex items-center gap-1.5 text-sm text-muted-foreground">
-                    <MapPin className="w-4 h-4 text-destructive" />
-                    <span>{therapistData.location}</span>
+                  {/* Experience and Sessions */}
+                  <div className="flex items-center gap-6 pt-2 border-t border-border/50">
+                    <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                      <Briefcase className="w-4 h-4 text-primary" />
+                      <span>{therapistData.experience} experience</span>
+                    </div>
+                    <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                      <Users className="w-4 h-4 text-primary" />
+                      <span>{therapistData.sessionsDone.toLocaleString()}+ sessions</span>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -178,7 +186,7 @@ export const TherapistProfile = () => {
               icon={<Heart className="w-5 h-5 text-primary" />}
               collapsible={false}
             >
-              <p className="text-primary leading-relaxed whitespace-pre-line text-sm">
+              <p className="text-muted-foreground leading-relaxed whitespace-pre-line text-sm">
                 {therapistData.bio}
               </p>
             </ProfileSection>
