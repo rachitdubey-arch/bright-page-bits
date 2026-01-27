@@ -13,6 +13,7 @@ interface ProfileSectionProps {
   children: ReactNode;
   defaultOpen?: boolean;
   collapsible?: boolean;
+  headerRight?: ReactNode;
 }
 
 export const ProfileSection = ({ 
@@ -20,7 +21,8 @@ export const ProfileSection = ({
   icon, 
   children, 
   defaultOpen = true,
-  collapsible = true 
+  collapsible = true,
+  headerRight
 }: ProfileSectionProps) => {
   const [isOpen, setIsOpen] = useState(defaultOpen);
 
@@ -28,9 +30,12 @@ export const ProfileSection = ({
     return (
       <Card className="shadow-soft border-border/50 overflow-hidden">
         <CardHeader className="pb-4">
-          <CardTitle className="flex items-center gap-2 text-lg font-serif">
-            {icon}
-            {title}
+          <CardTitle className="flex items-center justify-between text-lg font-serif">
+            <span className="flex items-center gap-2">
+              {icon}
+              {title}
+            </span>
+            {headerRight}
           </CardTitle>
         </CardHeader>
         <CardContent>{children}</CardContent>
