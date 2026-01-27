@@ -2,7 +2,6 @@ import {
   Star, 
   MapPin, 
   Languages, 
-  Clock, 
   Heart,
   Shield,
   Users,
@@ -11,22 +10,21 @@ import {
   Award,
   BookOpen,
   CreditCard,
-  GraduationCap,
-  ShieldCheck
+  Calendar
 } from 'lucide-react';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Badge } from '@/components/ui/badge';
+import { SiteHeader } from '@/components/SiteHeader';
 import { ProfileSection } from './ProfileSection';
 import { BookingSidebar } from './BookingSidebar';
 import { SpecializationTag } from './SpecializationTag';
 import { QualificationBadge } from './QualificationBadge';
-import { EducationEntry } from './EducationEntry';
-import { WorkExperienceEntry } from './WorkExperienceEntry';
-import { CertificationEntry } from './CertificationEntry';
+import { ProfessionalBackground } from './ProfessionalBackground';
 
 const therapistData = {
   name: 'Dr. Priya Sharma',
   title: 'Clinical Psychologist',
+  subtitle: 'Therapist / Psychologist',
   image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=400&fit=crop&crop=face',
   rating: 4.9,
   reviewCount: 127,
@@ -35,18 +33,29 @@ const therapistData = {
   experience: '12+ years',
   practicingSince: 2012,
   sessionsDone: 2500,
-  bio: `I'm a licensed clinical psychologist with over 12 years of experience helping individuals navigate life's challenges. My approach combines evidence-based therapies with compassionate understanding, creating a safe space where healing can begin.
+  isOnline: true,
+  availability: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+  bio: `I am a qualified Mental Health Practitioner and Therapist and Corporate wellness program based in Mumbai, dedicated to helping individuals improve their mental and emotional well-being. With a compassionate and non-judgmental approach, I offer therapy for people of all age groups, backgrounds, and walks of life.
 
-I specialize in anxiety disorders, depression, relationship issues, and trauma recovery. I believe that every person has the innate capacity for growth and change, and my role is to help you discover and nurture that potential.`,
+Mental health is not a luxury — it's a necessity. Whether you are struggling with anxiety, stress, depression, trauma, relationship issues, grief, or simply feel the need to talk to someone in a safe space, I am here to support you. I believe that therapy is a collaborative journey where we work together to help you find clarity, balance, and emotional strength.
+
+My aim is to provide holistic care, tailored to your unique needs. Every individual's story is different, and I honor that by creating personalized therapy plans that help you grow emotionally, mentally, and spiritually.`,
   specializations: [
-    'Anxiety & Stress',
+    'Abuse',
+    'Addiction',
+    'Anger',
+    'Anxiety',
+    'Child Or Teen',
     'Depression',
-    'Relationship Issues',
-    'Trauma & PTSD',
-    'Self-Esteem',
-    'Life Transitions',
-    'Work-Life Balance',
-    'Grief & Loss'
+    'Family',
+    'Insomnia',
+    'LGBTQ+',
+    'OCD',
+    'Relationship/Couple',
+    'Spiritual',
+    'Stress Management',
+    'Trauma And PTSD',
+    'Workplace Issues'
   ],
   approaches: [
     'Cognitive Behavioral Therapy (CBT)',
@@ -97,68 +106,79 @@ I specialize in anxiety disorders, depression, relationship issues, and trauma r
 export const TherapistProfile = () => {
   return (
     <div className="min-h-screen bg-background">
-      <div className="max-w-6xl mx-auto px-4 py-6 lg:py-10">
+      <SiteHeader />
+      
+      <div className="max-w-6xl mx-auto px-4 py-6 lg:py-8">
         <div className="grid lg:grid-cols-[1fr_340px] gap-6 lg:gap-8">
           {/* Main Content */}
           <div className="space-y-5">
             {/* Hero Section */}
-            <div className="flex flex-col sm:flex-row gap-5 items-start animate-fade-in">
-              <Avatar className="w-28 h-28 sm:w-32 sm:h-32 rounded-2xl shadow-medium border-4 border-card">
-                <AvatarImage src={therapistData.image} alt={therapistData.name} className="object-cover" />
-                <AvatarFallback className="text-2xl font-serif">{therapistData.name.split(' ').map(n => n[0]).join('')}</AvatarFallback>
-              </Avatar>
-              
-              <div className="flex-1 space-y-3">
-                <div>
-                  <div className="flex items-center gap-2 flex-wrap">
-                    <h1 className="text-2xl sm:text-3xl font-serif font-semibold text-foreground">
-                      {therapistData.name}
-                    </h1>
-                    <Badge variant="secondary" className="bg-success-light text-success border-success/20">
-                      <Shield className="w-3 h-3 mr-1" />
-                      Verified
-                    </Badge>
+            <div className="bg-card rounded-xl p-5 shadow-soft border border-border/50 animate-fade-in">
+              <div className="flex flex-col sm:flex-row gap-5 items-start">
+                <Avatar className="w-24 h-24 sm:w-28 sm:h-28 rounded-xl shadow-soft border-2 border-border">
+                  <AvatarImage src={therapistData.image} alt={therapistData.name} className="object-cover" />
+                  <AvatarFallback className="text-2xl font-serif">{therapistData.name.split(' ').map(n => n[0]).join('')}</AvatarFallback>
+                </Avatar>
+                
+                <div className="flex-1 space-y-2">
+                  <div className="flex items-start justify-between gap-4">
+                    <div>
+                      <h1 className="text-xl sm:text-2xl font-serif font-semibold text-foreground">
+                        {therapistData.name}
+                      </h1>
+                      <p className="text-muted-foreground text-sm">{therapistData.title}</p>
+                      <p className="text-muted-foreground text-xs">{therapistData.subtitle}</p>
+                    </div>
+                    <div className="flex items-center gap-1 shrink-0">
+                      <Star className="w-4 h-4 fill-warning text-warning" />
+                      <Star className="w-4 h-4 fill-warning text-warning" />
+                      <Star className="w-4 h-4 fill-warning text-warning" />
+                      <Star className="w-4 h-4 fill-warning text-warning" />
+                      <Star className="w-4 h-4 fill-warning text-warning" />
+                      <span className="text-sm text-muted-foreground ml-1">({therapistData.reviewCount})</span>
+                    </div>
                   </div>
-                  <p className="text-muted-foreground font-medium">{therapistData.title}</p>
-                </div>
 
-                <div className="flex flex-wrap items-center gap-4 text-sm">
-                  <div className="flex items-center gap-1.5">
-                    <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-                    <span className="font-semibold">{therapistData.rating}</span>
-                    <span className="text-muted-foreground">({therapistData.reviewCount} reviews)</span>
+                  {/* Online Status */}
+                  {therapistData.isOnline && (
+                    <p className="text-[hsl(var(--online))] font-medium text-sm">Online</p>
+                  )}
+
+                  {/* Availability */}
+                  <div className="flex items-center gap-1.5 text-sm text-muted-foreground">
+                    <Calendar className="w-4 h-4" />
+                    <span>{therapistData.availability.join(', ')}</span>
                   </div>
-                  <div className="flex items-center gap-1.5 text-muted-foreground">
-                    <MapPin className="w-4 h-4" />
+
+                  {/* Location */}
+                  <div className="flex items-center gap-1.5 text-sm text-muted-foreground">
+                    <MapPin className="w-4 h-4 text-destructive" />
                     <span>{therapistData.location}</span>
-                  </div>
-                  <div className="flex items-center gap-1.5 text-muted-foreground">
-                    <Languages className="w-4 h-4" />
-                    <span>{therapistData.languages.join(', ')}</span>
-                  </div>
-                </div>
-
-                {/* Quick Stats */}
-                <div className="flex flex-wrap gap-3 pt-1">
-                  <div className="flex items-center gap-2 px-3 py-2 rounded-xl bg-secondary/70">
-                    <Briefcase className="w-4 h-4 text-primary" />
-                    <span className="text-sm font-medium">{therapistData.experience} experience</span>
-                  </div>
-                  <div className="flex items-center gap-2 px-3 py-2 rounded-xl bg-secondary/70">
-                    <Users className="w-4 h-4 text-primary" />
-                    <span className="text-sm font-medium">{therapistData.sessionsDone.toLocaleString()}+ sessions</span>
                   </div>
                 </div>
               </div>
             </div>
 
+            {/* Specializations */}
+            <div className="bg-card rounded-xl p-5 shadow-soft border border-border/50">
+              <div className="flex items-center gap-2 mb-3">
+                <Users className="w-5 h-5 text-primary" />
+                <h3 className="text-base font-serif font-semibold text-foreground">Specialization:</h3>
+              </div>
+              <div className="flex flex-wrap gap-2">
+                {therapistData.specializations.map((spec) => (
+                  <SpecializationTag key={spec} label={spec} />
+                ))}
+              </div>
+            </div>
+
             {/* About Section */}
             <ProfileSection 
-              title="About Me" 
+              title="About:" 
               icon={<Heart className="w-5 h-5 text-primary" />}
               collapsible={false}
             >
-              <p className="text-foreground/80 leading-relaxed whitespace-pre-line">
+              <p className="text-primary leading-relaxed whitespace-pre-line text-sm">
                 {therapistData.bio}
               </p>
             </ProfileSection>
@@ -172,19 +192,6 @@ export const TherapistProfile = () => {
               <div className="flex flex-wrap gap-2">
                 {therapistData.insurance.map((ins) => (
                   <SpecializationTag key={ins} label={ins} variant="highlight" />
-                ))}
-              </div>
-            </ProfileSection>
-
-            {/* Specializations */}
-            <ProfileSection 
-              title="Specializations" 
-              icon={<MessageCircle className="w-5 h-5 text-primary" />}
-              collapsible={false}
-            >
-              <div className="flex flex-wrap gap-2">
-                {therapistData.specializations.map((spec) => (
-                  <SpecializationTag key={spec} label={spec} />
                 ))}
               </div>
             </ProfileSection>
@@ -233,64 +240,12 @@ export const TherapistProfile = () => {
               </div>
             </ProfileSection>
 
-            {/* Education */}
-            <ProfileSection 
-              title="Education" 
-              icon={<GraduationCap className="w-5 h-5 text-primary" />}
-              collapsible={false}
-            >
-              <div className="space-y-3">
-                {therapistData.education.map((edu, index) => (
-                  <EducationEntry 
-                    key={index}
-                    institution={edu.institution}
-                    degree={edu.degree}
-                    from={edu.from}
-                    to={edu.to}
-                  />
-                ))}
-              </div>
-            </ProfileSection>
-
-            {/* Work Experience */}
-            <ProfileSection 
-              title="Work Experience" 
-              icon={<Briefcase className="w-5 h-5 text-primary" />}
-              collapsible={false}
-            >
-              <div className="space-y-3">
-                {therapistData.workExperience.map((exp, index) => (
-                  <WorkExperienceEntry 
-                    key={index}
-                    jobTitle={exp.jobTitle}
-                    company={exp.company}
-                    employmentType={exp.employmentType}
-                    from={exp.from}
-                    to={exp.to}
-                  />
-                ))}
-              </div>
-            </ProfileSection>
-
-            {/* Certifications / Licenses */}
-            <ProfileSection 
-              title="Certifications / Licenses" 
-              icon={<ShieldCheck className="w-5 h-5 text-primary" />}
-              collapsible={false}
-            >
-              <div className="space-y-3">
-                {therapistData.certifications.map((cert, index) => (
-                  <CertificationEntry 
-                    key={index}
-                    certifyingBody={cert.certifyingBody}
-                    certificationName={cert.certificationName}
-                    licenseNumber={cert.licenseNumber}
-                    validFrom={cert.validFrom}
-                    validTo={cert.validTo}
-                  />
-                ))}
-              </div>
-            </ProfileSection>
+            {/* Professional Background - Tabbed Section */}
+            <ProfessionalBackground 
+              education={therapistData.education}
+              workExperience={therapistData.workExperience}
+              certifications={therapistData.certifications}
+            />
           </div>
 
           {/* Booking Sidebar */}
